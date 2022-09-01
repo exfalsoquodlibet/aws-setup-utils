@@ -16,7 +16,7 @@ Assuming a role means that the AWS token service will give you **temporary crede
 
 Ensure you have a python environment activated.
 
-Install the python package [`boto3`][https://pypi.org/project/boto3/].
+Install the python package [`boto3`](https://pypi.org/project/boto3/).
 
 Configure `aws` credentials:
 
@@ -91,4 +91,7 @@ print(buckets)
 
 ## Helper functions for `boto3`
 
-You can find some helpers functions (wrappers for the above) in [helpers_aws_boto3.py]. 
+You can find some helpers functions (wrappers for the above) in [helpers_aws_boto3.py](helpers_aws_boto3.py). 
+
+[ds-role]: https://us-east-1.console.aws.amazon.com/iamv2/home?region=eu-west-1#/roles/details/govuk-datascienceusers?section=permissions
+[awscli-install]: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
