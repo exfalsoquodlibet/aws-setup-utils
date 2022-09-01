@@ -1,14 +1,17 @@
 # Set up AWS CLI to assume roles with MFA and interact with GDS AWS
 
-Here we go through how to set up `aws cli` to assume an AWS IAM Role that has permissions your AWS user account does not have (e.g., accessing `S3`). It assumes that MFA is also required.
+Here we go through how to set up `aws cli` to assume an AWS IAM Role that has permissions your AWS user account does not have (for instance, accessing `S3`). It assumes that MFA is also required.
 
-Assuming a role means that the AWS token service will give you **temporary credentials** to access the account with an assumed role. 
+Assuming a role means that the AWS token service will give you **temporary credentials** to access the AWS account with an assumed role. 
 
 ## GDS AWS Requirements
 
 1. Ensure you have a GDS AWS Account. This will give you access to GDS AWS. Follow these instructions if you have not already done so as part of your onboarding: https://docs.publishing.service.gov.uk/manual/get-started.html#8-get-aws-access. At the end, you will have created your AWS user account, and also received an `access key ID` and `secret access key`.
 
-2. Get STS Permission to AssumeRole with MFA for the role you want to assume. For instance, if you are a Data Scientist in CPTO, you may want to assume [`govuk-datascienceusers` AWS IAM Role][ds-role]. You can ask on the `#data-engineering` Slack channel.
+2. Get STS Permission to AssumeRole with MFA for the role you want to assume. 
+
+    For instance, if you are a Data Scientist in CPTO, you may want to assume the [`govuk-datascienceusers` AWS IAM Role][ds-role]. Ask on the `#data-engineering` Slack channel to get this permission.
+
 
 ## Set up AWS ALI
 
@@ -56,3 +59,11 @@ For instance:
 ```shell
 aws s3 ls --profile govuk-datascience
 ```
+
+### Note
+
+- You will be asked to provide a `MFA token` the first time you use the profile and when the temporary credentials have expired and new ones will need to be generated.
+- Your temporary credentials get saved in: `~/.aws/cli/cache`.
+
+[ds-role]: https://us-east-1.console.aws.amazon.com/iamv2/home?region=eu-west-1#/roles/details/govuk-datascienceusers?section=permissions
+[awscli-install]: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html

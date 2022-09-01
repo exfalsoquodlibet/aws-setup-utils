@@ -1,8 +1,8 @@
 # aws-setup-utils
 
 Quick guides on how to assume a cross-account GDS AWS Role that requires Multi-Factor-Authentication (MFA):
-- using `aws-cli`: [setup-aws-cli.md]
-- using AWS Python SDK `boto3`: [setup-boto3.md]
+- using `aws-cli`: [setup-aws-cli.md][setup-aws-cli.md]
+- using AWS Python SDK `boto3`: [setup-boto3.md][setup-boto3.md]
 
 so that you can do things your GDS AWS Account is not authorised to do, e.g., interacting with `S3`.
 

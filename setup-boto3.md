@@ -8,7 +8,9 @@ Assuming a role means that the AWS token service will give you **temporary crede
 
 1. Ensure you have a GDS AWS Account. This will give you access to GDS AWS. Follow these instructions if you have not already done so as part of your onboarding: https://docs.publishing.service.gov.uk/manual/get-started.html#8-get-aws-access. At the end, you will have created your AWS user account, and also received an `access key ID` and `secret access key`.
 
-2. Get STS Permission to AssumeRole with MFA for the role you want to assume. For instance, if you are a Data Scientist in CPTO, you may want to assume [`govuk-datascienceusers` AWS IAM Role][ds-role]. You can ask on the `#data-engineering` Slack channel.
+2. Get STS Permission to AssumeRole with MFA for the role you want to assume.
+
+    For instance, if you are a Data Scientist in CPTO, you may want to assume the [`govuk-datascienceusers` AWS IAM Role][ds-role]. Ask on the `#data-engineering` Slack channel to get this permission.
 
 ## `boto3` Requirements
 
