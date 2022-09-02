@@ -2,18 +2,18 @@
 
 Here we go through how to set up `aws cli` to assume an AWS IAM Role that has permissions your AWS user account does not have (for instance, accessing `S3`). It assumes that MFA is also required.
 
-Assuming a role means that the AWS token service will give you **temporary credentials** to access the AWS account with an assumed role. 
+Assuming a role means that the AWS token service will give you **temporary credentials** to access the (GDS) AWS account with an assumed role. 
 
 ## GDS AWS Requirements
 
-1. Ensure you have a GDS AWS Account. This will give you access to GDS AWS. Follow these instructions if you have not already done so as part of your onboarding: https://docs.publishing.service.gov.uk/manual/get-started.html#8-get-aws-access. At the end, you will have created your AWS user account, and also received an `access key ID` and `secret access key`.
+1. Ensure you have access to GDS AWS Account. Follow these instructions if you have not already done so as part of your onboarding: [GDS - Get AWS Access] (https://docs.publishing.service.gov.uk/manual/get-started.html#8-get-aws-access). At the end, you will have created your AWS IAM user account, and also received an AWS `access key ID` and `secret access key`.
 
-2. Get STS Permission to AssumeRole with MFA for the role you want to assume. 
+2. Get [STS Permission to AssumeRole with MFA](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_permissions-to-switch.html) for the role you want to assume. 
 
-    For instance, if you are a Data Scientist in CPTO, you may want to assume the [`govuk-datascienceusers` AWS IAM Role][ds-role]. Ask on the `#data-engineering` Slack channel to get this permission.
+    For instance, if you are a Data Scientist in CPTO, you may want to assume the [`govuk-datascienceusers` IAM Role][ds-role]. Ask on the `#data-engineering` Slack channel to get this permission.
 
 
-## Set up AWS ALI
+## Set up AWS CLI
 
 3. Ensure you have `aws cli` installed. It should have gotten installed as part of step 1. To verify, in your terminal run:
 
@@ -28,7 +28,7 @@ If it is not available, please [follow the official installation instructions][a
 ```shell
 aws configure
 ```
-and follow the prompts. NOTE: you will be asked to provide your `access key ID` and `secret access key` so have them ready.
+and follow the prompts. NOTE: you will be asked to provide your AWS `access key ID` and `secret access key` so have them ready.
 
 Your credentials should have now been added to the `~/.aws/credentials` file, under a `[default]` profile.
 
@@ -43,7 +43,7 @@ mfa_serial = arn:aws:iam::<YOUR USER ACCOUNT NUMBER>:mfa/<YOUR NAME>.<YOUR SURNA
 choosing a suitable `<PROFILE-ALIAS>` and substituting the correct values for `<ROLE ACCOUNT NUM>`, `<ROLE NAME>`, `<YOUR USER ACCOUNT NUMBER>`, `<YOUR NAME>` and `<YOUR SURNAME>`.
 
 
-For instance, to create a profile for the `govuk-datascienceusers` so that we can assume that role with MFA, to the `~/.aws/config` file, add:
+For instance, to create a profile for the `govuk-datascienceusers` so that we can assume that role with MFA, in the `~/.aws/config` file, add:
 
 ```
 [profile govuk-datascience]
