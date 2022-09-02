@@ -6,7 +6,7 @@ Assuming a role means that the AWS token service will give you **temporary crede
 
 ## GDS AWS Requirements
 
-1. Ensure you have access to GDS AWS Account. Follow these instructions if you have not already done so as part of your onboarding: [GDS - Get AWS Access] (https://docs.publishing.service.gov.uk/manual/get-started.html#8-get-aws-access). At the end, you will have created your AWS IAM user account, and also received an AWS `access key ID` and `secret access key`.
+1. Ensure you have access to GDS AWS Account. Follow these instructions if you have not already done so as part of your onboarding: [GDS - Get AWS Access](https://docs.publishing.service.gov.uk/manual/get-started.html#8-get-aws-access). At the end, you will have created your AWS IAM user account, and also received an AWS `access key ID` and `secret access key`.
 
 2. Get [STS Permission to AssumeRole with MFA](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_permissions-to-switch.html) for the role you want to assume. 
 
