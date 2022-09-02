@@ -1,16 +1,16 @@
 # Set up AWS Python SDK (boto3) to assume roles with MFA and interact with GDS AWS
 
-Here we go through how to use `boto3` to interact with GDS AWS by assuming an IAM Role that has permissions your AWS user account does not have (e.g., accessing `S3`). It assumes that MFA is also required.
+Here we go through how to use Python `boto3` to interact with GDS AWS by assuming an AWS IAM Role that has permissions your AWS user account does not have (e.g., accessing `S3`). It assumes that MFA is also required.
 
-Assuming a role means that the AWS token service will give you **temporary credentials** to access the account with an assumed role. 
+Assuming a role means that the AWS token service will give you **temporary credentials** to access the (GDS) AWS account with an assumed role. 
 
 ## GDS AWS Requirements
 
-1. Ensure you have a GDS AWS Account. This will give you access to GDS AWS. Follow these instructions if you have not already done so as part of your onboarding: https://docs.publishing.service.gov.uk/manual/get-started.html#8-get-aws-access. At the end, you will have created your AWS user account, and also received an `access key ID` and `secret access key`.
+1. Ensure you have access to the GDS AWS Account. Follow these instructions if you have not already done so as part of your onboarding: [GDS - Get AWS Access](https://docs.publishing.service.gov.uk/manual/get-started.html#8-get-aws-access). At the end, you will have created your AWS user account, and also received an AWS `access key ID` and `secret access key`.
 
-2. Get STS Permission to AssumeRole with MFA for the role you want to assume.
+2. Get [STS Permission to AssumeRole with MFA](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_permissions-to-switch.html) for the role you want to assume.
 
-    For instance, if you are a Data Scientist in CPTO, you may want to assume the [`govuk-datascienceusers` AWS IAM Role][ds-role]. Ask on the `#data-engineering` Slack channel to get this permission.
+    For instance, if you are a Data Scientist in CPTO, you may want to assume the [`govuk-datascienceusers` IAM Role][ds-role]. Ask on the `#data-engineering` Slack channel to get this permission.
 
 ## `boto3` Requirements
 
@@ -23,14 +23,14 @@ Configure `aws` credentials:
 ```shell
 aws configure
 ```
-and follow the prompts. NOTE: you will be asked to provide your `access key ID` and `secret access key` so have them ready. More info here: https://docs.aws.amazon.com/sdkref/latest/guide/creds-config-files.html.
+and follow the prompts. NOTE: you will be asked to provide your AWS `access key ID` and `secret access key` so have them ready (see [AWS SDKs Configurations for more info](https://docs.aws.amazon.com/sdkref/latest/guide/creds-config-files.html).
 
-Alternatively, you can set up your configurations and credentials as (secret) environment variables. More here: https://docs.aws.amazon.com/sdkref/latest/guide/environment-variables.html.
+Alternatively, you can [set up your configurations and credentials as (secret) environment variables](https://docs.aws.amazon.com/sdkref/latest/guide/environment-variables.html).
 
 
 ## Set up `boto3`
 
-These are the basic steps to generate temporary credentials via AssumeRole with MFA and use them to make a connection to Amazon `S3`.
+These are the basic steps to generate temporary credentials in `boto3` via AssumeRole-with-MFA and use them to make a connection to Amazon `S3`.
 
 1. Create an STS client object, representing a live connection to the STS service
     
